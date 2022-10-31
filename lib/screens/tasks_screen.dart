@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:todoey_flutter_official/tasks_list.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey_flutter_official/models/task_data.dart';
+import 'package:todoey_flutter_official/widgets/tasks_list.dart';
 
+import '../models/task.dart';
 import 'add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -13,7 +16,7 @@ class TasksScreen extends StatelessWidget {
             showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
-                builder: (BuildContext context) => SingleChildScrollView(
+                builder: (context) => SingleChildScrollView(
                         child: Container(
                       padding: EdgeInsets.only(
                           bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -51,7 +54,7 @@ class TasksScreen extends StatelessWidget {
                     color: Colors.white),
               ),
               Text(
-                '12 tasks',
+                '${Provider.of<TaskData>(context).taskCount} tasks',
                 style: TextStyle(fontSize: 20.0, color: Colors.white),
               )
             ]),
